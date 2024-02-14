@@ -1,0 +1,58 @@
+/* Register.css */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensure the container takes up the full height of the viewport */
+  }
+  
+  .register-form {
+    max-width: 350px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .register-form h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .register-form input[type='text'],
+  .register-form input[type='email'],
+  .register-form input[type='password'] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+  }
+  
+  .register-form input[type='text']:focus,
+  .register-form input[type='email']:focus,
+  .register-form input[type='password']:focus {
+    outline: none;
+    background-color: #eaeaea;
+  }
+  
+  .register-form button {
+    width: 100%;
+    padding: 12px 0;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .register-form button:hover {
+    background-color: #0056b3;
+  }
+  
