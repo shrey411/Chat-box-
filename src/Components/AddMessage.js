@@ -145,10 +145,17 @@ const AddMessage = () => {
             const reader = new FileReader();
             reader.onload = function (e) {
                 const dataURL = e.target.result;
+                let messageType = "text"
+                if(file.type.startsWith("image/")){
+                    messageType = "Photo"
+                }
+                if(file.type.startsWith("video/")){
+                    messageType = "Video"
+                }
                 if (activeUser) {
-                    dispatch(addMessage(activeUser, dataURL, 'Photo')); // You can pass 'photo', 'video', or 'document' based on the file type
+                    dispatch(addMessage(activeUser, dataURL, messageType)); 
                 } else if (activeGroup) {
-                    dispatch(addGroupMessage(activeGroup, dataURL, 'photo')); // You can pass 'photo', 'video', or 'document' based on the file type
+                    dispatch(addGroupMessage(activeGroup, dataURL, messageType)); 
                 }
             };
             reader.readAsDataURL(file); 

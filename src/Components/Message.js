@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import profileImg from '../images/profileImgChatbox.png';
 import { useSelector } from 'react-redux';
 
@@ -25,6 +25,8 @@ import { useSelector } from 'react-redux';
 // }
 
 const Message = () => {
+  const [zoomedImage, setZoomedImage] = useState(null); // State variable to track zoomed image URL
+
 
   const activeUser = useSelector(state => state.activeUser);
   const activeGroup = useSelector(state => state.activeGroup);
@@ -36,6 +38,10 @@ const Message = () => {
     return null;
   }
 
+  const handleImageClick = (imageUrl) => {
+    setZoomedImage(imageUrl); // Set the URL of the clicked image for zooming
+  };
+  
 
   return (
 
@@ -47,11 +53,15 @@ const Message = () => {
         >
           {message.author === 'bot' && <img src={user.profileImg} alt={user.name} className='profile-img' />}
           <span className='message-text'>
-            {message.type === "Photo" && <img src={message.content} alt='uploded-image' className='uploded-image' />}
+            {message.type === "Photo" && <img src={message.content} alt='uploded-imag' 
+            className='uploaded-image'
+            onClick={() => handleImageClick(message.content)} // Zoom in on image click
+          />}
             {message.type === "text" && message.content}
             {message.type === "Video" && <video
-              className='uploded-image'
-              width="140px"
+              // className='uploded-image'
+              width="240px"
+              height = "140px"
               src={message.content}
               controls/>
             }
@@ -70,6 +80,11 @@ const Message = () => {
           </span>
         </div>
       ))}
+      {zoomedImage && (
+        <div className="zoom-overlay" onClick={() => setZoomedImage(null)}> {/* Click overlay to zoom out */}
+          <img src={zoomedImage} alt='zoomed-image' className='zoomed-image' />
+        </div>
+      )}
     </div>
   );
 };
