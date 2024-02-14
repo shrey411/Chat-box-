@@ -52,16 +52,17 @@ export const setActiveUser = (user) => ({
   payload: user,
 });
 
-export const addMessage = (userId, message ) => ({
+export const addMessage = (userId, message,messageType ) => ({
   type: ADD_USER_MESSAGE,
-  payload: { userId, message },
+  payload: { userId, message,messageType },
 });
 
-export const addBotReply = (userId, message) => ({
+export const addBotReply = (userId, message,messageType) => ({
   type: ADD_BOT_REPLY,
   payload: {
     userId,
     message,
+    messageType
   },
 });
 

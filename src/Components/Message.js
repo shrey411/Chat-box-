@@ -1,6 +1,6 @@
 import React from 'react'
 // import profileImg from '../images/profileImgChatbox.png';
-import { connect, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 
 // import styled from 'styled-components';
 // import ProfileImgBot from '../images/download.jpg'
@@ -47,7 +47,8 @@ const Message = () => {
         >
           {message.author === 'bot' && <img src={user.profileImg} alt={user.name} className='profile-img' />}
           <span className='message-text'>
-            {message.content}
+            {message.type === "Photo" && <img src={message.content} alt='uploded-image' className='uploded-image'/>}
+            {message.type === "text" && message.content}
           </span>
         </div> 
       ))}
@@ -64,36 +65,20 @@ const Message = () => {
         </div>
       ))}
     </div>
-    //    <ul>
-    //     {user.messages.map((message, index) => (
-    //       <li key={index}>{message}</li>
-    //     ))}
-    //   </ul> 
-    //  <div className="message-container">
-    //     {activeUser?.messages.map((message, index) => (
-    //      <div key={index} className={`msg-container ${message.author === 'Shrey' ? 'user-message' : 'bot-message'}`}>
-    //        {!message.isUserMessage && <img src={message.profileImg} alt="Profile" className="profile-img" />}
-    //        <span className="message-text">
-    //          <i>{message.author}</i>: &nbsp;{message.text}
-    //        </span>
-    //        {message.isUserMessage && <img src={profileImg} alt="Profile" className="profile-img" />}
-    //      </div>
-    //    ))}
-    //    </div> 
   );
 };
 
-// export default Message;
+export default Message;
 
-const mapStateToProps = (state) => {
-  // Assuming you have an activeUser in your state
-  const { activeUser } = state;
-  // Extracting messages of the active user
-  const messages = activeUser ? activeUser.messages : [];
-  return { messages };
-};
+// const mapStateToProps = (state) => {
+//   // Assuming you have an activeUser in your state
+//   const { activeUser } = state;
+//   // Extracting messages of the active user
+//   const messages = activeUser ? activeUser.messages : [];
+//   return { messages };
+// };
 
-export default connect(mapStateToProps)(Message);
+// export default connect(mapStateToProps)(Message);
 
 
 

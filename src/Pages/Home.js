@@ -150,7 +150,8 @@ const HomePage = styled.section`
             font-size: 24px; 
             color: #fff;
         }
-        
+    // message.js //
+
 .msg-container {
     display: flex;
     align-items: center;
@@ -169,6 +170,10 @@ const HomePage = styled.section`
     height: 40px;
     border-radius: 50%;
     margin-left: 10px;
+  }
+  .uploded-image{
+    width: 140px;
+    height: 140px;
   }
   
   .user-message {

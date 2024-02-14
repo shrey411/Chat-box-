@@ -71,13 +71,13 @@ import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Picker from 'emoji-picker-react';
 import { addMessage, addBotReply, addGroupMessage } from "../actions";
+import { render } from "@testing-library/react";
 
 const AddMessage = () => {
     const [inputMessage, setInputMessage] = useState('');
     const [showPicker, setShowPicker] = useState(false);
     const inputRef = useRef(null);
     const [showAttachmentOptions, setShowAttachmentOptions] = useState(false); // State to toggle attachment options
-
 
     const activeUser = useSelector(state => state.activeUser);
     const activeGroup = useSelector(state => state.activeGroup);
@@ -89,9 +89,9 @@ const AddMessage = () => {
             console.log('Sending Message:', inputMessage);
             if (activeUser) {
 
-                dispatch(addMessage(activeUser, inputMessage));
+                dispatch(addMessage(activeUser, inputMessage,"text"));
                 const botReply = generateBotReply();
-                dispatch(addBotReply(activeUser, botReply));
+                dispatch(addBotReply(activeUser, botReply,"text"));
 
             } else if (activeGroup) {
 
@@ -132,17 +132,28 @@ const AddMessage = () => {
         // Implement logic to handle attachment click (e.g., open file picker)
         setShowAttachmentOptions(prevState => !prevState); // Toggle attachment options
     };
-    const handleOptionClick = (e) => {
-        const option = e.target.textContent;
+    const handleOptionClick = (option) => {
         if (option === 'Add Photo' || option === 'Add Video' || option === 'Add Document') {
             // Trigger file input click
             document.getElementById('fileInput').click();
         }
     };
 
-    // const handleFileChange = (e) => {
-    //     const file = e.target.files[0];
-    // };
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const dataURL = e.target.result;
+                if (activeUser) {
+                    dispatch(addMessage(activeUser, dataURL, 'Photo')); // You can pass 'photo', 'video', or 'document' based on the file type
+                } else if (activeGroup) {
+                    dispatch(addGroupMessage(activeGroup, dataURL, 'photo')); // You can pass 'photo', 'video', or 'document' based on the file type
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+        };
 
     return (
         <section id="new-message">
@@ -160,12 +171,12 @@ const AddMessage = () => {
             </div>
             {showAttachmentOptions && (
                 <div className="attachment-options-container">
-                    <div className="attachment-option" onClick={handleOptionClick}>Add Photo</div>
+                    <div className="attachment-option" onClick={() =>handleOptionClick("Add Photo")}>Add Photo</div>
                     <div className="attachment-option" onClick={handleOptionClick}>Add Video</div>
                     <div className="attachment-option" onClick={handleOptionClick}>Add Document</div>
                 </div>
             )}
-            <input id="fileInput" type="file" style={{ display: 'none' }}  />
+            <input id="fileInput" type="file" style={{ display: 'none' }} onChange={handleFileChange} />
             <div className="input-container">
                 <input
                     type="text"
