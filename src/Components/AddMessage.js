@@ -140,10 +140,9 @@ const AddMessage = () => {
         }
     };
 
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        // Handle the selected file, you can upload it or perform other actions here
-    };
+    // const handleFileChange = (e) => {
+    //     const file = e.target.files[0];
+    // };
 
     return (
         <section id="new-message">
@@ -166,7 +165,7 @@ const AddMessage = () => {
                     <div className="attachment-option" onClick={handleOptionClick}>Add Document</div>
                 </div>
             )}
-            <input id="fileInput" type="file" style={{ display: 'none' }} onChange={handleFileChange} />
+            <input id="fileInput" type="file" style={{ display: 'none' }}  />
             <div className="input-container">
                 <input
                     type="text"
