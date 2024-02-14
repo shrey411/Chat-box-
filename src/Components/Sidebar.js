@@ -238,7 +238,10 @@ const SidebarContainer = styled.section`
     }
     .user-details span,
     .group-details span{
-        color: rgba(255,255,255,0.3)
+        color: rgba(255,255,255,0.3);
+        width:130px;
+        overflow: hidden;
+        text-overflow: ellipsis; /* This is where the magic happens. */
     }
     .chat-icons{
         display: flex;

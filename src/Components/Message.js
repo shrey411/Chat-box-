@@ -1,6 +1,6 @@
 import React from 'react'
 // import profileImg from '../images/profileImgChatbox.png';
-import {  useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 // import styled from 'styled-components';
 // import ProfileImgBot from '../images/download.jpg'
@@ -30,7 +30,7 @@ const Message = () => {
   const activeGroup = useSelector(state => state.activeGroup);
   const user = useSelector(state => state.users.find(user => user.id === activeUser));
   const group = useSelector(state => state.groups.find(group => group.id === activeGroup));
-  console.log("group id in Message file:",group)
+  console.log("group id in Message file:", group)
 
   if ((!user || !user.messages) && (!group || !group.messages)) {
     return null;
@@ -47,10 +47,16 @@ const Message = () => {
         >
           {message.author === 'bot' && <img src={user.profileImg} alt={user.name} className='profile-img' />}
           <span className='message-text'>
-            {message.type === "Photo" && <img src={message.content} alt='uploded-image' className='uploded-image'/>}
+            {message.type === "Photo" && <img src={message.content} alt='uploded-image' className='uploded-image' />}
             {message.type === "text" && message.content}
+            {message.type === "Video" && <video
+              className='uploded-image'
+              width="140px"
+              src={message.content}
+              controls/>
+            }
           </span>
-        </div> 
+        </div>
       ))}
 
       {activeGroup && group.messages.map((message, index) => (

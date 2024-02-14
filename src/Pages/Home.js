@@ -30,6 +30,7 @@ const Home = () => {
 export default Home;
 
 const HomePage = styled.section`
+
     .container-fluid {
         display: flex;
         height: 100vh;
@@ -40,6 +41,7 @@ const HomePage = styled.section`
         flex: 1;
         display: flex;
         padding:0px;
+        overflow-x: none;
       }
     
       .sub-1 {

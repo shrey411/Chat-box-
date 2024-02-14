@@ -151,7 +151,7 @@ const AddMessage = () => {
                     dispatch(addGroupMessage(activeGroup, dataURL, 'photo')); // You can pass 'photo', 'video', or 'document' based on the file type
                 }
             };
-            reader.readAsDataURL(file);
+            reader.readAsDataURL(file); 
         }
         };
 
@@ -172,8 +172,8 @@ const AddMessage = () => {
             {showAttachmentOptions && (
                 <div className="attachment-options-container">
                     <div className="attachment-option" onClick={() =>handleOptionClick("Add Photo")}>Add Photo</div>
-                    <div className="attachment-option" onClick={handleOptionClick}>Add Video</div>
-                    <div className="attachment-option" onClick={handleOptionClick}>Add Document</div>
+                    <div className="attachment-option" onClick={() =>handleOptionClick("Add Video")}>Add Video</div>
+                    <div className="attachment-option" onClick={() =>handleOptionClick("Add Document")}>Add Document</div>
                 </div>
             )}
             <input id="fileInput" type="file" style={{ display: 'none' }} onChange={handleFileChange} />
