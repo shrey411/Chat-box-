@@ -52,13 +52,6 @@ const Sidebar = () => {
         setGroupName('');
         setSelectedUsers([]);
     };
-    // const getLastMessage = (user) => {
-    //     if (user.messages.length > 0) {
-    //         const lastMessage = user.messages[user.messages.length - 1];
-    //         return `${lastMessage.content}`;
-    //     }
-    // };
-
     const getLastMessage = (messages) => {
         if (messages && messages.length > 0) {
             return messages[messages.length - 1].content;
@@ -296,16 +289,5 @@ const SidebarContainer = styled.section`
 
 `;
 
-// // export default Sidebar;
-// const mapStateToProps = (state) => ({
-//     users: state.users,
-//     activeUser: state.activeUser
-// });
-
-// const mapDispatchToProps = {
-//     setActiveUser
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
 
 export default Sidebar;

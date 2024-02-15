@@ -1,28 +1,7 @@
 import React, { useState } from 'react'
-// import profileImg from '../images/profileImgChatbox.png';
 import { useSelector } from 'react-redux';
 
-// import styled from 'styled-components';
-// import ProfileImgBot from '../images/download.jpg'
 
-
-
-// const Message = ({ message,author,selectedUser }) => {
-//   const isUserMessage = author === 'Shrey';
-//   return (
-
-//     // <MessageListContainer>
-//     <div className={`msg-container ${isUserMessage ? 'user-message' : 'bot-message'}`}>
-
-//       {!isUserMessage  && <img src={selectedUser?.profileImg  } alt="Profile" className="profile-img" /> }
-//       <span className='message-text'>
-//         <i>{author}</i>: &nbsp;{message}
-//       </span>
-//       {isUserMessage && <img src={profileImg} alt="Profile" className="profile-img" />}
-//     </div>
-//     //  </MessageListContainer> */
-//   )
-// }
 
 const Message = () => {
   const [zoomedImage, setZoomedImage] = useState(null); // State variable to track zoomed image URL
@@ -82,7 +61,7 @@ const Message = () => {
       ))}
       {zoomedImage && (
         <div className="zoom-overlay" onClick={() => setZoomedImage(null)}> {/* Click overlay to zoom out */}
-          <img src={zoomedImage} alt='zoomed-image' className='zoomed-image' />
+          <img src={zoomedImage} alt='zoomed-imag' className='zoomed-image' />
         </div>
       )}
     </div>
@@ -91,56 +70,4 @@ const Message = () => {
 
 export default Message;
 
-// const mapStateToProps = (state) => {
-//   // Assuming you have an activeUser in your state
-//   const { activeUser } = state;
-//   // Extracting messages of the active user
-//   const messages = activeUser ? activeUser.messages : [];
-//   return { messages };
-// };
 
-// export default connect(mapStateToProps)(Message);
-
-
-
-// const MessageListContainer = styled.div`
-
-// .msg-container {
-//   display: flex;
-//   align-items: center;
-//   margin-bottom: 10px;
-// }
-
-// .message-text {
-//   background-color: #DCF8C6; /* Default background color */
-//   padding: 8px 12px;
-//   border-radius: 10px;
-//   max-width: 70%;
-// }
-
-// .profile-img {
-//   width: 40px;
-//   height: 40px;
-//   border-radius: 50%;
-//   margin-left: 10px;
-// }
-
-// .user-message {
-//   justify-content: flex-end;
-// }
-
-// .bot-message {
-//   justify-content: flex-start;
-// }
-
-// .user-message .message-text {
-//   background-color: #DCF8C6; /* Adjust to your sent message color */
-//   margin-left: auto; /* Push message to the right */
-// }
-
-// .bot-message .message-text {
-//   background-color: #E5E5EA; /* Adjust to your received message color */
-//   margin-right: auto; /* Push message to the left */
-// }
-
-// `
