@@ -20,7 +20,7 @@ const Message = () => {
   const handleImageClick = (imageUrl) => {
     setZoomedImage(imageUrl); // Set the URL of the clicked image for zooming
   };
-  
+
 
   return (
 
@@ -32,18 +32,24 @@ const Message = () => {
         >
           {message.author === 'bot' && <img src={user.profileImg} alt={user.name} className='profile-img' />}
           <span className='message-text'>
-            {message.type === "Photo" && <img src={message.content} alt='uploded-imag' 
-            className='uploaded-image'
-            onClick={() => handleImageClick(message.content)} // Zoom in on image click
-          />}
+            {message.type === "Photo" && <img src={message.content} alt='uploded-imag'
+              className='uploaded-image'
+              onClick={() => handleImageClick(message.content)} // Zoom in on image click
+            />}
             {message.type === "text" && message.content}
             {message.type === "Video" && <video
               // className='uploded-image'
               width="240px"
-              height = "140px"
+              height="140px"
               src={message.content}
-              controls/>
+              controls />
             }
+            {/* {message.type === "Doc" && <iframe
+              title="Document Viewer"
+              src={message.content}
+              style={{ width: '240px', height: '140px' }}
+              frameBorder="0"
+            ></iframe>} */}
           </span>
         </div>
       ))}
@@ -55,8 +61,18 @@ const Message = () => {
         >
           {message.author === 'bot' && <img src={user.profileImg} alt={user.name} className='profile-img' />}
           <span className='message-text'>
-            {message.content}
-          </span>
+          {message.type === "Photo" && <img src={message.content} alt='uploded-imag'
+              className='uploaded-image'
+              onClick={() => handleImageClick(message.content)} // Zoom in on image click
+            />}
+            {message.type === "text" && message.content}
+            {message.type === "Video" && <video
+              // className='uploded-image'
+              width="240px"
+              height="140px"
+              src={message.content}
+              controls />
+            }          </span>
         </div>
       ))}
       {zoomedImage && (

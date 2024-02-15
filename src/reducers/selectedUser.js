@@ -78,7 +78,7 @@ const reducer = (state = initialState, action) => {
                 ...group,
                 messages: [
                     ...group.messages,
-                    { author: action.payload.author, content: action.payload.message },
+                    { author: "user", content: action.payload.message,type: action.payload.messageType },
                 ],
             }
             : group

@@ -66,9 +66,9 @@ export const addBotReply = (userId, message,messageType) => ({
   },
 });
 
-export const addGroupMessage = (author, message) => ({
+export const addGroupMessage = (author, message, messageType) => ({
   type: ADD_GROUP_MESSAGE,
-  payload: { author, message },
+  payload: { author, message,messageType },
 });
 
 

@@ -51,6 +51,7 @@ const Sidebar = () => {
         dispatch(createGroup(groupData));
         setGroupName('');
         setSelectedUsers([]);
+        setDropdownOpen(false)
     };
     const getLastMessage = (messages) => {
         if (messages && messages.length > 0) {
@@ -200,7 +201,8 @@ const SidebarContainer = styled.section`
     }
     span{
         color: white;
-        font-size:12px
+        font-size:12px;
+
     }
     
     .header-1{
@@ -217,8 +219,9 @@ const SidebarContainer = styled.section`
     }
     .user-details span,
     .group-details span{
+        display: block;
         color: rgba(255,255,255,0.3);
-        width:130px;
+        width:140px;
         overflow: hidden;
         text-overflow: ellipsis; /* This is where the magic happens. */
     }

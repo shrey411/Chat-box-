@@ -28,7 +28,7 @@ const AddMessage = () => {
             } else if (activeGroup) {
 
                 console.log("active group name:", activeGroup)
-                dispatch(addGroupMessage('user', inputMessage));
+                dispatch(addGroupMessage(activeGroup, inputMessage,"text"));
             }
             setInputMessage('');
         }
