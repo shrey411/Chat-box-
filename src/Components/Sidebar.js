@@ -79,20 +79,6 @@ const Sidebar = () => {
 
 
     return (
-        // <SidebarContainer>
-        //     <ul>
-        //         {users.map((user) => (
-        //             <li key={user.id}>
-        //                 <img src={user.profileImg} alt="Profile" className="profile-img" />
-        //                  <span>{user.name}</span> 
-        //                 <div>
-        //                     <span>{user.name}</span>
-        //                     <p>{getLastMessage(user.id)}</p>
-        //                 </div>
-        //             </li>
-        //         ))}
-        //     </ul>
-        // </SidebarContainer>
         <SidebarContainer>
             <div className='sidbar-header'>
                 <div className='header-1 mt-3'>

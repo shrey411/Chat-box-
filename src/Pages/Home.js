@@ -94,9 +94,8 @@ const HomePage = styled.section`
             margin-bottom: 5px; 
             margin-top: 10px; 
             max-width: 70%;
-            margin-right: 10px; 
+            margin-right: 20px; 
           }
-           
          #messages-list {
              padding: 5px 0 0 5px;
          }
@@ -176,6 +175,8 @@ const HomePage = styled.section`
   .uploaded-image{
     width: 140px;
     height: 140px;
+    allowfullscreen: ;
+    loading: lazy;
   }
   .zoom-overlay {
     position: fixed;

@@ -71,7 +71,7 @@ import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Picker from 'emoji-picker-react';
 import { addMessage, addBotReply, addGroupMessage } from "../actions";
-import { render } from "@testing-library/react";
+// import { render } from "@testing-library/react";
 
 const AddMessage = () => {
     const [inputMessage, setInputMessage] = useState('');
@@ -136,6 +136,7 @@ const AddMessage = () => {
         if (option === 'Add Photo' || option === 'Add Video' || option === 'Add Document') {
             // Trigger file input click
             document.getElementById('fileInput').click();
+            setShowAttachmentOptions(false)
         }
     };
 
