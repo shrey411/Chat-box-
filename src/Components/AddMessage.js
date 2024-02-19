@@ -10,6 +10,7 @@ const AddMessage = () => {
     const [showPicker, setShowPicker] = useState(false);
     const inputRef = useRef(null);
     const [showAttachmentOptions, setShowAttachmentOptions] = useState(false); // State to toggle attachment options
+    
 
     const activeUser = useSelector(state => state.activeUser);
     const activeGroup = useSelector(state => state.activeGroup);
@@ -84,6 +85,9 @@ const AddMessage = () => {
                 }
                 if(file.type.startsWith("video/")){
                     messageType = "Video"
+                }
+                if(file.type.startsWith("application/")){
+                    messageType = "Doc"
                 }
                 if (activeUser) {
                     dispatch(addMessage(activeUser, dataURL, messageType)); 

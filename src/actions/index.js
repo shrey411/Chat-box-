@@ -46,6 +46,9 @@ export const ADD_BOT_REPLY = 'ADD_BOT_REPLY';
 export const CREATE_GROUP = 'CREATE_GROUP';
 export const ADD_GROUP_MESSAGE = 'ADD_GROUP_MESSAGE'; // New action type for adding group messages
 
+export const DELETE_MESSAGE = 'DELETE_MESSAGE';
+
+
 
 export const setActiveUser = (user) => ({
   type: SET_ACTIVE_USER,
@@ -81,3 +84,9 @@ export const setActiveGroup = (group) => ({
   type: SET_ACTIVE_GROUP,
   payload: group,
 });
+
+export const deleteMessage = (messageId) => ({
+  type: DELETE_MESSAGE,
+  payload: { messageId }
+});
+
