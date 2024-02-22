@@ -161,9 +161,11 @@ const HomePage = styled.section`
   
   .message-text {
     background-color: #DCF8C6; /* Default background color */
-    padding: 8px 12px;
-    border-radius: 10px;
-    max-width: 70%;
+    padding: 8px 15px;
+    border-radius: 5px;
+    max-width: 90%;
+    display:flex;
+    flex-direction: column;
   }
   
   .profile-img {
@@ -247,5 +249,6 @@ const HomePage = styled.section`
 .attachment-option:hover {
   background-color: rgba(0,0,0,.2); 
 }
+
   
 `;

@@ -34,7 +34,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         users: state.users.map(user =>
           user.id === action.payload.userId
-            ? { ...user, messages: [...user.messages, { author: 'user', content: action.payload.message, type: action.payload.messageType }] }
+            ? { ...user, messages: [...user.messages, { id : uuidv4(),author: 'user', content: action.payload.message, type: action.payload.messageType }] }
             : user
         ),
       };
@@ -43,7 +43,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         users: state.users.map(user =>
           user.id === action.payload.userId
-            ? { ...user, messages: [...user.messages, { author: 'bot', content: action.payload.message, type: action.payload.messageType }] }
+            ? { ...user, messages: [...user.messages, { id : uuidv4(),author: 'bot', content: action.payload.message, type: action.payload.messageType }] }
             : user
         ),
       };
