@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { deleteMessage } from "../actions";
 import ReactionsPicker from "./ReactionsPicker";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { Container, Menu, MenuItem } from "@mui/material";
+import {  Menu, MenuItem } from "@mui/material";
 
 
 const Message = () => {
@@ -13,20 +13,16 @@ const Message = () => {
   const [selectedMessageId, setSelectedMessageId] = useState(null);
   const [selectedMessageIdForReaction, setSelectedMessageIdForReaction] = useState(null);
   const [isHovered, setIsHovered] = useState(false)
-  const [buttonClicked, setButtonClicked] = useState(false);
-  const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0, right: 0 });
 
 
   // reaction picker //
   const [showReactionPicker, setShowReactionPicker] = useState(false)
-  const [pickerPosition, setPickerPosition] = useState({ top: 0, left: 0 });
   const [selectedEmoji, setSelectedEmoji] = useState({})
 
 
   // MUI //
 
   const [anchorEl, setAnchorEl] = useState(null);
-  const [hover, setHover] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -58,25 +54,11 @@ const Message = () => {
   const handlerContext = (message, event) => {
     setIsHovered(true)
     setSelectedMessageId(message);
-    const rect = event.target.getBoundingClientRect();
-    const buttonLeft =
-      message.author === "user" ? rect.left - 245 : rect.right - 265;
-
-    setButtonPosition({
-      top: rect.top + window.scrollY + event.target.offsetHeight - 95,
-      left: buttonLeft + window.scrollX,
-    });
-
+  
   };
 
   console.log("before delete", selectedMessageId)
 
-
-  const handleButtonClick = () => {
-    setContext(!context);
-    setButtonClicked(true);
-
-  };
 
   const handlerMessageDelete = () => {
     if (selectedMessageId) {
@@ -94,13 +76,6 @@ const Message = () => {
   const handleReaction = (message, event) => {
     setSelectedMessageIdForReaction(message);
     setShowReactionPicker(!showReactionPicker);
-    const rect = event.target.getBoundingClientRect();
-
-    setPickerPosition({
-      top: rect.top + window.scrollY,
-      left: rect.left + window.scrollX - 50,
-    });
-
 
   };
   console.log("selected Emoji", selectedEmoji)
@@ -299,20 +274,6 @@ const ReactionsPickerContainer = styled.div`
   ${(props) => props.author === "user" ? "right: 0%;" : "left: 2%;"} 
   transform: translateX(-5%); 
 
-`;
-
-const ContextCOntainer = styled.div`
-
-  .context-for-message {
-    background-color: rgba(255, 255, 255, 40%);
-    width: 140px;
-    height: 60px;
-    cursor: pointer;
-  }
-  .context-to-delete:hover,
-  .context-to-reply:hover {
-    background-color: rgba(255, 255, 255, 40%);
-  }
 `;
 
 
