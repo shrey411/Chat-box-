@@ -163,7 +163,7 @@ const HomePage = styled.section`
     background-color: #DCF8C6; /* Default background color */
     padding: 8px 15px;
     border-radius: 5px;
-    max-width: 90%;
+    max-width: 100%;
     display:flex;
     flex-direction: column;
   }

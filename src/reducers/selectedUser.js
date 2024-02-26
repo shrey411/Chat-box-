@@ -96,7 +96,7 @@ const reducer = (state = initialState, action) => {
           const updatedMessage = state.users.map(user =>
             user.id === state.activeUser
               ? { ...user, messages: user.messages.filter(message =>
-                (message.content !== messageId.content || message.author !== messageId.author)
+                (message.content !== messageId.content || message.author !== messageId.author || message.id !== messageId.id )
               ) }
               : user
           )

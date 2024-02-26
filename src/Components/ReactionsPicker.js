@@ -19,8 +19,16 @@ const ReactionsPicker = ({ onReactionSelect }) => {
 
   const handleReactionSelect = (reaction) => {
     onReactionSelect(reaction);
-    setShowEmojiPicker(false); // Close emoji picker after selection
+    setShowEmojiPicker(false); 
   };
+
+  const onEmojiClick = (event) => {
+    const sym = event.unified.split("-");
+    const codeArray = sym.map(ele => parseInt(ele, 16));
+    let emoji = String.fromCodePoint(...codeArray);
+    onReactionSelect(emoji);
+
+};
 
   return (
     <>
@@ -29,13 +37,15 @@ const ReactionsPicker = ({ onReactionSelect }) => {
       {showEmojiPicker && (
         <div className="emoji-picker-container">
           <Picker
-            onEmojiClick={(event, emojiObject) => handleReactionSelect(emojiObject.emoji)}
+            onEmojiClick={onEmojiClick}
             disableAutoFocus={true}
             disableSearchBar={true}
             native
           />
+        
         </div>
       )}
+    
       {defaultReactions.map((reaction, index) => (
         <span
           key={index}
